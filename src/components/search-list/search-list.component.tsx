@@ -1,6 +1,5 @@
 import "./search-list.component.scss";
 
-import React from "react";
 import { SearchPreview } from "../search-preview/search-preview.component";
 
 export const SearchList = ({ historySearches } : {historySearches : string[]}) => {

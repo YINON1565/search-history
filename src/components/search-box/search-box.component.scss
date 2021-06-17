@@ -18,28 +18,6 @@
   &.focus {
     box-shadow: 0 4px 24px #12263f0f;
   }
-  form {
-  }
-  .controller-area {
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-  }
-  .submit-button {
-    height: $default-el-height;
-    position: absolute;
-    top: 0;
-    border-radius: $radius;
-    left: calc(100% + 16px);
-    width: 102px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    text-transform: capitalize;
-    background-color: $primary;
-    color: #fff;
-  }
 }
 
 .png-icon {

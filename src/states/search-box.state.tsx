@@ -90,12 +90,6 @@ const allSearchesfilteredState = selector({
   }
 });
 
-const isTermInputState = selector({
-  key: 'isTermInputState',
-  get: ({ get }) => {
-    return get(termInputState).length;
-  }
-});
 // ******* End => Selectors *********
 
 // interface Search {
@@ -120,5 +114,4 @@ export {
   sameSearchIdxState,
   allSearchesState,
   allSearchesfilteredState,
-  isTermInputState
 }
