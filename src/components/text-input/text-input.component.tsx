@@ -1,30 +1,17 @@
-import React from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import {
-  isSearchBoxFocusState,
-  termInputState,
-} from "../../states/search-box.state";
 import "./text-input.component.scss";
 
-export const TextInput = () => {
-  const [termInput, setTermInput] = useRecoilState(termInputState);
-  const setisSearchBoxFocus = useSetRecoilState(isSearchBoxFocusState);
-
-  const onInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-    const value = ev.target.value;
-    setTermInput(value);
-    value && setisSearchBoxFocus(true);
-  };
-
+export const TextInput = ({ onInputChange, term }: TextInputType) => {
   return (
-    <>
-      {/* Todo: Add "custon caret" in height and width as in design  */}
-      <input
-        type="text"
-        autoComplete="off"
-        value={termInput}
-        onChange={onInputChange}
-      />
-    </>
+    <input
+      type="text"
+      autoComplete="off"
+      value={term}
+      onChange={(ev) => onInputChange(ev.target.value)}
+    />
   );
 };
+
+interface TextInputType {
+  onInputChange: (term: string) => void;
+  term: string;
+}
