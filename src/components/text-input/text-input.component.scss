@@ -1,0 +1,11 @@
+@import "../../styles/globals";
+
+input {
+  height: $default-el-height;
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #12263F;
+  caret-color: #212121;
+  font-size: 15px;
+}
