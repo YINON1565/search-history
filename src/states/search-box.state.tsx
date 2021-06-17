@@ -1,31 +1,31 @@
 import { atom, selector } from 'recoil';
 
 // ******* function Helpers *********
-const saveItem = (arr, index, newItem) => {
+const saveItem = (arr: string[], index: number, newItem : string) => {
   return index === -1 ? _addItem(arr, newItem) : _jumpItemTopList(arr, index, newItem);
 }
 
-const removeItem = (arr, index) => {
+const removeItem = (arr: string[], index : number) => {
   return [...arr.slice(0, index), ...arr.slice(index + 1)];
 }
 
-const _addItem = (arr, newItem) => {
+const _addItem = (arr : string[], newItem : any) => {
   return [_cleanStr(newItem), ...arr];
 }
 
-const _jumpItemTopList = (arr, index, newItem) => {
+const _jumpItemTopList = (arr : string[], index : number, newItem : any) => {
   return [newItem, ...arr.slice(0, index), ...arr.slice(index + 1)];
 }
 
-const _isSame = (str_1, str_2) => {
+const _isSame = (str_1 : string, str_2 : string) => {
   return str_1 === _cleanStr(str_2)
 }
 
-const _cleanStr = (str) => {
+const _cleanStr = (str : string) => {
   return str.toLowerCase().trim()
 }
 
-const _filterByTerm = (allSearches, termInput) => {
+const _filterByTerm = (allSearches : string[], termInput : string) => {
   // Todo: Improving performance by stopping filtering after total items
   return allSearches.filter(search => search.includes(termInput))
 }
@@ -33,22 +33,22 @@ const _filterByTerm = (allSearches, termInput) => {
 
 
 // ******* Atoms *********
-const isSearchBoxFocusState = atom({
+const isSearchBoxFocusState = atom<boolean>({
   key: 'isSearchBoxState',
   default: false,
 });
 
-const termInputState = atom({
+const termInputState = atom<string>({
   key: 'termInputState',
   default: '',
 });
 
-const searchSuggestionsState = atom({
+const searchSuggestionsState = atom<string[]>({
   key: 'searchSuggestions',
   default: [] // "Lorem ipsum dolor sit amet dicta minima possimus magni voluptas!".split(" ").map(str => _cleanStr(str))
 });
 
-const historySearchesState = atom({
+const historySearchesState = atom<string[]>({
   key: 'historySearchesState',
   default: [],
 });
@@ -97,6 +97,13 @@ const isTermInputState = selector({
   }
 });
 // ******* End => Selectors *********
+
+// interface Search {
+//   id : string,
+//   txt: string,
+//   counter : number,
+//   lastAt : number
+// }
 
 
 export {

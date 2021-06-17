@@ -14,7 +14,7 @@ import {
 } from "../../states/search-box.state";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
-export const SearchPreview = ({ historySearch, historySearchIndex }) => {
+export const SearchPreview = ({ historySearch, historySearchIndex } : {historySearch: string, historySearchIndex : number}) => {
   const [historySearches, setHistorySearches] =
     useRecoilState(historySearchesState);
 
@@ -22,12 +22,12 @@ export const SearchPreview = ({ historySearch, historySearchIndex }) => {
 
   const setIsSearchBoxFocus = useSetRecoilState(isSearchBoxFocusState);
 
-  const onRemoveHistorySearch = (ev) => {
+  const onRemoveHistorySearch = (ev : React.SyntheticEvent) => {
     ev.stopPropagation();
     setHistorySearches(removeItem(historySearches, historySearchIndex));
   };
 
-  const onSelectSearch = (ev) => {
+  const onSelectSearch = (ev : React.SyntheticEvent) => {
     ev.stopPropagation();
     setHistorySearches(
       saveItem(historySearches, historySearchIndex, historySearch)

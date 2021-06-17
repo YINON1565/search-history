@@ -10,8 +10,8 @@ export const TextInput = () => {
   const [termInput, setTermInput] = useRecoilState(termInputState);
   const setisSearchBoxFocus = useSetRecoilState(isSearchBoxFocusState);
 
-  const onInputChange = (ev) => {
-    const { value } = ev.target;
+  const onInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    const value = ev.target.value;
     setTermInput(value);
     value && setisSearchBoxFocus(true);
   };

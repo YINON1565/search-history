@@ -34,12 +34,12 @@ export const SearchBox = () => {
     isSearchBoxFocusState
   );
 
-  const toggleFocus = (isSearchBox, ev) => {
+  const toggleFocus = (isSearchBox : boolean, ev? : React.MouseEvent<HTMLElement>) => {
     ev && ev.stopPropagation();
     setIsSearchBoxFocus(isSearchBox);
   };
 
-  const onSubmit = (ev) => {
+  const onSubmit = (ev : React.SyntheticEvent) => {
     ev.preventDefault();
     if (termInput) {
       setHistorySearches(
@@ -59,7 +59,7 @@ export const SearchBox = () => {
       >
         <section
           className={`${isSearchBoxFocus ? "focus" : ""} search-box`}
-          onClick={(ev) => toggleFocus(true, ev)}
+          onClick={(ev : React.MouseEvent<HTMLElement>) => toggleFocus(true, ev)}
         >
           <form onSubmit={onSubmit}>
             <section className="controller-area">
