@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/search-history/static/css/main.0ee8f4d7.chunk.css",
-    "main.js": "/search-history/static/js/main.5d04df91.chunk.js",
-    "main.js.map": "/search-history/static/js/main.5d04df91.chunk.js.map",
-    "runtime-main.js": "/search-history/static/js/runtime-main.b029eaab.js",
-    "runtime-main.js.map": "/search-history/static/js/runtime-main.b029eaab.js.map",
-    "static/js/2.105e1cfe.chunk.js": "/search-history/static/js/2.105e1cfe.chunk.js",
-    "static/js/2.105e1cfe.chunk.js.map": "/search-history/static/js/2.105e1cfe.chunk.js.map",
-    "static/js/3.9c84fe3e.chunk.js": "/search-history/static/js/3.9c84fe3e.chunk.js",
-    "static/js/3.9c84fe3e.chunk.js.map": "/search-history/static/js/3.9c84fe3e.chunk.js.map",
+    "main.css": "/search-history/static/css/main.da85add7.chunk.css",
+    "main.js": "/search-history/static/js/main.4e525728.chunk.js",
+    "main.js.map": "/search-history/static/js/main.4e525728.chunk.js.map",
+    "runtime-main.js": "/search-history/static/js/runtime-main.c96f0a79.js",
+    "runtime-main.js.map": "/search-history/static/js/runtime-main.c96f0a79.js.map",
+    "static/js/2.42096273.chunk.js": "/search-history/static/js/2.42096273.chunk.js",
+    "static/js/2.42096273.chunk.js.map": "/search-history/static/js/2.42096273.chunk.js.map",
+    "static/js/3.5498492c.chunk.js": "/search-history/static/js/3.5498492c.chunk.js",
+    "static/js/3.5498492c.chunk.js.map": "/search-history/static/js/3.5498492c.chunk.js.map",
     "index.html": "/search-history/index.html",
-    "static/css/main.0ee8f4d7.chunk.css.map": "/search-history/static/css/main.0ee8f4d7.chunk.css.map",
-    "static/js/2.105e1cfe.chunk.js.LICENSE.txt": "/search-history/static/js/2.105e1cfe.chunk.js.LICENSE.txt",
+    "static/css/main.da85add7.chunk.css.map": "/search-history/static/css/main.da85add7.chunk.css.map",
+    "static/js/2.42096273.chunk.js.LICENSE.txt": "/search-history/static/js/2.42096273.chunk.js.LICENSE.txt",
     "static/media/index.scss": "/search-history/static/media/CerebriSansPro-Regular.03aa7042.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.b029eaab.js",
-    "static/js/2.105e1cfe.chunk.js",
-    "static/css/main.0ee8f4d7.chunk.css",
-    "static/js/main.5d04df91.chunk.js"
+    "static/js/runtime-main.c96f0a79.js",
+    "static/js/2.42096273.chunk.js",
+    "static/css/main.da85add7.chunk.css",
+    "static/js/main.4e525728.chunk.js"
   ]
 }
