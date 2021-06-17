@@ -10,11 +10,11 @@ const removeItem = (arr, index) => {
 }
 
 const _addItem = (arr, newItem) => {
-  return [newItem, ...arr];
+  return [_cleanStr(newItem), ...arr];
 }
 
 const _jumpItemTopList = (arr, index, newItem) => {
-  return [_cleanStr(newItem), ...arr.slice(0, index), ...arr.slice(index + 1)];
+  return [newItem, ...arr.slice(0, index), ...arr.slice(index + 1)];
 }
 
 const _isSame = (str_1, str_2) => {
