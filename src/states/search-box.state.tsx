@@ -34,7 +34,7 @@ const _filterByTerm = (allSearches : string[], termInput : string) => {
 
 // ******* Atoms *********
 const isSearchBoxFocusState = atom<boolean>({
-  key: 'isSearchBoxState',
+  key: "isSearchBoxFocusState",
   default: false,
 });
 
@@ -93,8 +93,8 @@ const allSearchesfilteredState = selector({
 // ******* End => Selectors *********
 
 // interface Search {
-//   id : string,
-//   txt: string,
+//   _id : string,
+//   term: string,
 //   counter : number,
 //   lastAt : number
 // }
