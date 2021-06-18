@@ -84,14 +84,15 @@ interface SearchPreviewType {
 const splitter = "#%%#@#";
 
 const _boldAutocomplatePipe = (search: string, term: string): JSX.Element[] => {
+  const cleanTerm = cleanStr(term);
   return search
-    .replace(term, splitter + term + splitter)
+    .replace(cleanTerm, splitter + cleanTerm + splitter)
     .split(splitter)
-    .map((letter, i) => {
-      return letter === term ? (
-        <span key={i}>{term}</span>
+    .map((partSearch, i) => {
+      return partSearch === cleanTerm ? (
+        <span key={i}>{cleanTerm}</span>
       ) : (
-        <b key={i}>{letter}</b>
+        <b key={i}>{partSearch}</b>
       );
     });
 };
