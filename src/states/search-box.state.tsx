@@ -1,31 +1,17 @@
 import { atom, selector } from "recoil";
 import { cleanStr, filterByTerm, isSame } from "../hooks/util.hook";
 import { localStorageEffect } from "../hooks/storage.hook";
+import { keyupHandlingEffect } from "../hooks/keyboard.hook";
 
 // ******* Configurations *********
-const HISTORY_SEARCHES_KEY = "history-searches-state";
-
+const HISTORY_SEARCHES_STOREAGE_KEY = "history-searches";
 
 // ******* Atoms *********
 const isSearchBoxFocusState = atom<boolean>({
   key: "isSearchBoxFocusState",
   default: false,
-  // effects_UNSTABLE: [
-  //   ({ onSet }) => {
-  //     onSet((isSearchBoxFocus) => {
-  //       isSearchBoxFocus
-  //       ? window.addEventListener("keyup", Onkeyup)
-  //       : window.removeEventListener("keyup", Onkeyup);
-  //     });
-  //   },
-  // ],
+  effects_UNSTABLE: [keyupHandlingEffect()],
 });
-// const Onkeyup = (ev: KeyboardEvent) => {
-//   const set = useSetRecoilState(isSearchBoxFocusState);
-//   if (ev.key === "Escape") {
-//     set(false);
-//   }
-// };
 
 const termInputState = atom<string>({
   key: "termInputState",
@@ -40,7 +26,7 @@ const searchSuggestionsState = atom<string[]>({
 const historySearchesState = atom<string[]>({
   key: "historySearchesState",
   default: [],
-  effects_UNSTABLE: [localStorageEffect<string[]>(HISTORY_SEARCHES_KEY)],
+  effects_UNSTABLE: [localStorageEffect<string[]>(HISTORY_SEARCHES_STOREAGE_KEY)],
 });
 // ******* End => Atoms *********
 
