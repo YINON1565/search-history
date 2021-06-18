@@ -1,5 +1,10 @@
 import { atom, selector } from "recoil";
 import { cleanStr, filterByTerm, isSame } from "../services/util.service";
+import { localStorageEffect } from "./atom-effect";
+
+// ******* Configurations *********
+const HISTORY_SEARCHES_KEY = "history-searches-state";
+
 
 // ******* Atoms *********
 const isSearchBoxFocusState = atom<boolean>({
@@ -20,6 +25,7 @@ const searchSuggestionsState = atom<string[]>({
 const historySearchesState = atom<string[]>({
   key: "historySearchesState",
   default: [],
+  effects_UNSTABLE: [localStorageEffect<string[]>(HISTORY_SEARCHES_KEY)],
 });
 // ******* End => Atoms *********
 
