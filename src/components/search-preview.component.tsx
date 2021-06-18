@@ -1,5 +1,3 @@
-import "./search-preview.component.scss";
-
 import React from "react";
 
 import {
@@ -8,10 +6,12 @@ import {
   saveItem,
   removeItem,
   termInputState,
-} from "../../states/search-box.state";
+} from "../states/search-box.state";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { IconPngUrlModel } from "../../services/icon-png.service";
-import { IconPng } from "../icon-png.component";
+import { IconPngUrlModel } from "../services/icon-png.service";
+import { IconPng } from "./icon-png.component";
+import { createUseStyles, useTheme } from "react-jss";
+import { ThemeModel } from "../App";
 
 export const SearchPreview = ({
   historySearch,
@@ -37,9 +37,13 @@ export const SearchPreview = ({
     setIsSearchBoxFocus(false);
   };
 
+  // Style
+  const theme: ThemeModel = useTheme();
+  const classes = useStyles({ theme });
+
   // HTML
   return (
-    <li className="search-preview" onClick={onSelectSearch}>
+    <li className={classes["search-preview"]} onClick={onSelectSearch}>
       <section className="flex a-center">
         {/* Todo: if is searchSuggestions show mag icon */}
         <IconPng name={IconPngUrlModel.History} />
@@ -56,6 +60,22 @@ export const SearchPreview = ({
     </li>
   );
 };
+
+const useStyles = createUseStyles((theme: ThemeModel) => ({
+  "search-preview": {
+    cursor: "pointer",
+    color: theme.variables["grey-8"],
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    height: 31,
+    transition: "background-Color .3s",
+    "&:hover": {
+      backgroundColor: "#00000005",
+    },
+  },
+}));
+
 interface SearchPreviewType {
   historySearch: string;
   historySearchIndex: number;

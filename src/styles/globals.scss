@@ -1,1 +1,6 @@
-@import "./setup/variables"
+@import "./basic/base";
+@import "./basic/reset";
+@import "./basic/helpers";
+@import "./basic/animations";
+
+@import "./setup/typography";

@@ -1,6 +1,4 @@
-import "./form-search.component.scss";
-
-import { TextInput } from "../text-input/text-input.component";
+import { TextInput } from "./text-input.component";
 
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import {
@@ -9,9 +7,11 @@ import {
   sameSearchIdxState,
   saveItem,
   termInputState,
-} from "../../states/search-box.state";
-import { IconPngUrlModel } from "../../services/icon-png.service";
-import { IconPng } from "../icon-png.component";
+} from "../states/search-box.state";
+import { IconPngUrlModel } from "../services/icon-png.service";
+import { IconPng } from "./icon-png.component";
+import { createUseStyles, useTheme } from "react-jss";
+import { ThemeModel } from "../App";
 export const FormSearch = () => {
   // Recoil state
   const sameSearchIdx = useRecoilValue(sameSearchIdxState);
@@ -35,10 +35,14 @@ export const FormSearch = () => {
     value && setIsSearchBoxFocus(true);
   };
 
+  // Style
+  const theme: ThemeModel = useTheme();
+  const classes = useStyles({ theme });
+
   // HTML
   return (
     <form onSubmit={onSubmit}>
-      <section className="controller-area">
+      <section className={classes["controller-area"]}>
         <IconPng name={IconPngUrlModel.Mag} />
         <TextInput onInputChange={onSetTermInput} term={termInput} />
         {termInput?.length ? (
@@ -53,7 +57,31 @@ export const FormSearch = () => {
           ""
         )}
       </section>
-      <button className="submit-button pointer">search</button>
+      <button className={classes["submit-button"]}>search</button>
     </form>
   );
 };
+
+const useStyles = createUseStyles((theme: ThemeModel) => ({
+  "controller-area": {
+    overflow: "hidden",
+    display: "flex",
+    alignItems: "center",
+  },
+  "submit-button": {
+    cursor: 'pointer',
+    height: theme.variables["default-el-height"],
+    position: "absolute",
+    top: 0,
+    left: "calc(100% + 16px)",
+    borderRadius: theme.variables.radius,
+    width: 102,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: 15,
+    textTransform: "capitalize",
+    backgroundColor: theme.variables.primary,
+    color: "#fff",
+  },
+}));
