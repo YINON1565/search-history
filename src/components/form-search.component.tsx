@@ -5,13 +5,13 @@ import {
   historySearchesState,
   isSearchBoxFocusState,
   sameSearchIdxState,
-  saveItem,
   termInputState,
 } from "../states/search-box.state";
 import { IconPngUrlModel } from "../services/icon-png.service";
 import { IconPng } from "./icon-png.component";
 import { createUseStyles, useTheme } from "react-jss";
 import { ThemeModel } from "../App";
+import { saveItem } from "../services/util.service";
 export const FormSearch = () => {
   // Recoil state
   const sameSearchIdx = useRecoilValue(sameSearchIdxState);

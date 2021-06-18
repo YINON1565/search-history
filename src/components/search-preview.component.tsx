@@ -3,8 +3,6 @@ import React from "react";
 import {
   historySearchesState,
   isSearchBoxFocusState,
-  saveItem,
-  removeItem,
   termInputState,
 } from "../states/search-box.state";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
@@ -12,6 +10,7 @@ import { IconPngUrlModel } from "../services/icon-png.service";
 import { IconPng } from "./icon-png.component";
 import { createUseStyles, useTheme } from "react-jss";
 import { ThemeModel } from "../App";
+import { cleanStr, removeItem, saveItem } from "../services/util.service";
 
 export const SearchPreview = ({
   historySearch,
