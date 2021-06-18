@@ -1,5 +1,5 @@
 import { createUseStyles } from "react-jss";
-import { IconPngUrl, IconPngUrlModel } from "../services/icon-png.service";
+import { IconPngUrl, IconPngUrlModel } from "../hooks/icon-png.hook";
 
 export const IconPng = ({ name }: { name: IconPngUrlModel }) => {
   const classes = useStyles();

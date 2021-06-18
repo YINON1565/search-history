@@ -6,11 +6,12 @@ import {
   termInputState,
 } from "../states/search-box.state";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { IconPngUrlModel } from "../services/icon-png.service";
+import { IconPngUrlModel } from "../hooks/icon-png.hook";
 import { IconPng } from "./icon-png.component";
 import { createUseStyles, useTheme } from "react-jss";
 import { ThemeModel } from "../App";
-import { cleanStr, removeItem, saveItem } from "../services/util.service";
+import { cleanStr } from "../hooks/util.hook";
+import { removeItem, saveItem } from "../hooks/crud.hook";
 
 export const SearchPreview = ({
   historySearch,
