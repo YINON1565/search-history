@@ -1,17 +1,24 @@
 import React from "react";
 
+// Style
+import { createUseStyles, useTheme } from "react-jss";
+import { ThemeModel } from "../../App";
+
+// State
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import {
   historySearchesState,
   isSearchBoxFocusState,
-  termInputState,
-} from "../states/search-box.state";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { IconPngUrlModel } from "../hooks/icon-png.hook";
-import { IconPng } from "./icon-png.component";
-import { createUseStyles, useTheme } from "react-jss";
-import { ThemeModel } from "../App";
-import { cleanStr } from "../hooks/util.hook";
-import { removeItem, saveItem } from "../hooks/crud.hook";
+  filterByState,
+} from "../../states/search-history.state";
+import { removeHistoySearch, saveHistoySearch } from "../../states/search-history-operations";
+
+// Components
+import { IconPngUrlModel } from "../../util/icon-png";
+import { IconPng } from "../helpers/icon-png.component";
+
+// Helpers
+import { boldAutocomplatePipe } from "../../util/helpers";
 
 export const SearchPreview = ({
   historySearch,
@@ -20,19 +27,19 @@ export const SearchPreview = ({
   // Recoil state
   const [historySearches, setHistorySearches] =
     useRecoilState(historySearchesState);
-  const termInput = useRecoilValue(termInputState);
+  const filterBy = useRecoilValue(filterByState);
   const setIsSearchBoxFocus = useSetRecoilState(isSearchBoxFocusState);
 
   // Events
   const onRemoveHistorySearch = (ev: React.SyntheticEvent) => {
     ev.stopPropagation();
-    setHistorySearches(removeItem(historySearches, historySearchIndex));
+    setHistorySearches(removeHistoySearch(historySearches, historySearchIndex));
   };
 
   const onSelectSearch = (ev: React.SyntheticEvent) => {
     ev.stopPropagation();
     setHistorySearches(
-      saveItem(historySearches, historySearchIndex, historySearch)
+      saveHistoySearch(historySearches, historySearchIndex, historySearch)
     );
     setIsSearchBoxFocus(false);
   };
@@ -48,8 +55,8 @@ export const SearchPreview = ({
         {/* Todo: if is searchSuggestions show mag icon */}
         <IconPng name={IconPngUrlModel.History} />
         <span>
-          {termInput
-            ? _boldAutocomplatePipe(historySearch, termInput)
+          {filterBy.term
+            ? boldAutocomplatePipe(historySearch, filterBy.term)
             : historySearch}
         </span>
       </section>
@@ -80,20 +87,3 @@ interface SearchPreviewType {
   historySearch: string;
   historySearchIndex: number;
 }
-
-// Helpers
-const splitter = "#%%#@#";
-
-const _boldAutocomplatePipe = (search: string, term: string): JSX.Element[] => {
-  const cleanTerm = cleanStr(term);
-  return search
-    .replace(cleanTerm, splitter + cleanTerm + splitter)
-    .split(splitter)
-    .map((partSearch, i) => {
-      return partSearch === cleanTerm ? (
-        <span key={i}>{cleanTerm}</span>
-      ) : (
-        <b key={i}>{partSearch}</b>
-      );
-    });
-};

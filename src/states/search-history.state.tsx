@@ -1,7 +1,8 @@
 import { atom, selector } from "recoil";
-import { cleanStr, filterByTerm, isSame } from "../hooks/util.hook";
-import { localStorageEffect } from "../hooks/storage.hook";
-import { keyupHandlingEffect } from "../hooks/keyboard.hook";
+import { cleanStr, isSame } from "../util/helpers";
+import { localStorageEffect } from "../util/storage-effect";
+import { keyupHandlingEffect } from "../util/keyboard-effect";
+import { filterSearches } from "./search-history-operations";
 
 // ******* Configurations *********
 const HISTORY_SEARCHES_STOREAGE_KEY = "history-searches";
@@ -13,9 +14,9 @@ const isSearchBoxFocusState = atom<boolean>({
   effects_UNSTABLE: [keyupHandlingEffect()],
 });
 
-const termInputState = atom<string>({
+const filterByState = atom<FilterByModel>({
   key: "termInputState",
-  default: "",
+  default: {term: ''},
 });
 
 const searchSuggestionsState = atom<string[]>({
@@ -31,21 +32,13 @@ const historySearchesState = atom<string[]>({
 // ******* End => Atoms *********
 
 // ******* Selectors *********
-const termInputAsRegexState = selector({
-  key: "termInputAsRegexState",
+const searchSimilarTermInputIdxState = selector({
+  key: "searchSimilarTermInputIdxState",
   get: ({ get }) => {
-    const termInput = get(termInputState);
-    return new RegExp(termInput, "i");
-  },
-});
-
-const sameSearchIdxState = selector({
-  key: "isTermInputExistState",
-  get: ({ get }) => {
-    const termInput = get(termInputState);
-    return termInput
+    const filterBy = get(filterByState);
+    return filterBy.term
       ? get(historySearchesState).findIndex((historySearch) =>
-          isSame(historySearch, termInput)
+          isSame(historySearch, filterBy.term)
         )
       : -1;
   },
@@ -65,10 +58,10 @@ const allSearchesState = selector({
 const allSearchesfilteredState = selector({
   key: "allSearchesfilteredState",
   get: ({ get }) => {
-    const termInput = cleanStr(get(termInputState));
+    const termInput = cleanStr(get(filterByState).term);
     const allSearches = JSON.parse(JSON.stringify(get(allSearchesState)));
     const allSearchesFiltered = termInput
-      ? filterByTerm(allSearches, termInput)
+      ? filterSearches(allSearches, termInput)
       : allSearches;
     return allSearchesFiltered.splice(0, 10);
   },
@@ -76,22 +69,26 @@ const allSearchesfilteredState = selector({
 
 // ******* End => Selectors *********
 
-// interface Search {
+// interface HistorySearch {
 //   _id : string,
-//   term: string,
+//   txt: string,
 //   counter : number,
-//   lastAt : number
+  // lastAt : number // at timestamp
 // }
 
 export {
   // atoms
   isSearchBoxFocusState,
-  termInputState,
+  filterByState,
   searchSuggestionsState,
   historySearchesState,
   // selectors
-  termInputAsRegexState,
-  sameSearchIdxState,
+  searchSimilarTermInputIdxState,
   allSearchesState,
   allSearchesfilteredState,
 };
+
+// Types
+export interface FilterByModel {
+  term: string
+}

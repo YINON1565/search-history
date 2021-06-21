@@ -1,5 +1,7 @@
 import { SearchPreview } from "./search-preview.component";
-import { ThemeModel } from "../App";
+
+// Style
+import { ThemeModel } from "../../App";
 import { createUseStyles, useTheme } from "react-jss";
 
 export const SearchList = ({

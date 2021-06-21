@@ -1,5 +1,5 @@
 import { createUseStyles, useTheme } from "react-jss";
-import { ThemeModel } from "../App";
+import { ThemeModel } from "../../App";
 
 export const TextInput = ({ onInputChange, term }: TextInputType) => {
   const theme: ThemeModel = useTheme();

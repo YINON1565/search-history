@@ -1,15 +1,19 @@
+// Style
+import { createUseStyles, useTheme } from "react-jss";
+import { ThemeModel } from "../../App";
 
+// State
 import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-
-import { SearchList } from "./search-list.component";
-import { FormSearch } from "./form-search.component";
 import {
   allSearchesfilteredState,
   isSearchBoxFocusState,
-} from "../states/search-box.state";
-import { createUseStyles, useTheme } from "react-jss";
-import { ThemeModel } from "../App";
+} from "../../states/search-history.state";
+
+// components
+import { SearchList } from "./search-list.component";
+import { FormSearch } from "./form-search.component";
+import { ShowOrHide } from "../helpers/show-or-hide.component";
 
 export const SearchBox = () => {
   // Recoil state
@@ -33,24 +37,23 @@ export const SearchBox = () => {
 
   // HTML
   return (
-    <>
+    <section
+      onClick={() => toggleFocus(false)}
+      className={classes["search-box-container"]}
+    >
       <section
-        onClick={() => toggleFocus(false)}
-        className={classes["search-box-container"]}
+        className={`${isSearchBoxFocus ? "focus" : ""} ${
+          classes["search-box"]
+        }`}
+        onClick={(ev: React.MouseEvent<HTMLElement>) => toggleFocus(true, ev)}
       >
-        <section
-          className={`${isSearchBoxFocus ? "focus" : ""} ${classes["search-box"]}`}
-          onClick={(ev: React.MouseEvent<HTMLElement>) => toggleFocus(true, ev)}
-        >
-          <FormSearch />
-          {isSearchBoxFocus && allSearchesfiltered?.length ? (
-            <SearchList historySearches={allSearchesfiltered} />
-          ) : (
-            ""
-          )}
-        </section>
+        <FormSearch />
+        <ShowOrHide isShow={isSearchBoxFocus && allSearchesfiltered?.length}>
+          {/* Todo: Get the list asynchronously */}
+          <SearchList historySearches={allSearchesfiltered} />
+        </ShowOrHide>
       </section>
-    </>
+    </section>
   );
 };
 
