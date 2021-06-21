@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/search-history/static/css/main.7e629c1f.chunk.css",
-    "main.js": "/search-history/static/js/main.fa0b117d.chunk.js",
-    "main.js.map": "/search-history/static/js/main.fa0b117d.chunk.js.map",
+    "main.css": "/search-history/static/css/main.34aa80ba.chunk.css",
+    "main.js": "/search-history/static/js/main.428c7c4d.chunk.js",
+    "main.js.map": "/search-history/static/js/main.428c7c4d.chunk.js.map",
     "runtime-main.js": "/search-history/static/js/runtime-main.c840530d.js",
     "runtime-main.js.map": "/search-history/static/js/runtime-main.c840530d.js.map",
     "static/js/2.4954327e.chunk.js": "/search-history/static/js/2.4954327e.chunk.js",
@@ -10,14 +10,15 @@
     "static/js/3.7cf0e118.chunk.js": "/search-history/static/js/3.7cf0e118.chunk.js",
     "static/js/3.7cf0e118.chunk.js.map": "/search-history/static/js/3.7cf0e118.chunk.js.map",
     "index.html": "/search-history/index.html",
-    "static/css/main.7e629c1f.chunk.css.map": "/search-history/static/css/main.7e629c1f.chunk.css.map",
+    "static/css/main.34aa80ba.chunk.css.map": "/search-history/static/css/main.34aa80ba.chunk.css.map",
     "static/js/2.4954327e.chunk.js.LICENSE.txt": "/search-history/static/js/2.4954327e.chunk.js.LICENSE.txt",
-    "static/media/index.scss": "/search-history/static/media/CerebriSansPro-Regular.03aa7042.ttf"
+    "static/media/index.scss": "/search-history/static/media/CerebriSansPro-Regular.03aa7042.ttf",
+    "static/media/rolling.a7e673cb.svg": "/search-history/static/media/rolling.a7e673cb.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.c840530d.js",
     "static/js/2.4954327e.chunk.js",
-    "static/css/main.7e629c1f.chunk.css",
-    "static/js/main.fa0b117d.chunk.js"
+    "static/css/main.34aa80ba.chunk.css",
+    "static/js/main.428c7c4d.chunk.js"
   ]
 }
