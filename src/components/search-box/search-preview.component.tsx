@@ -11,7 +11,10 @@ import {
   isSearchBoxFocusState,
   filterByState,
 } from "../../states/search-history.state";
-import { removeHistoySearch, saveHistoySearch } from "../../states/search-history-operations";
+import {
+  removeHistoySearch,
+  saveHistoySearch,
+} from "../../states/search-history-operations";
 
 // Components
 import { IconPngUrlModel } from "../../util/icon-png";
@@ -19,6 +22,7 @@ import { IconPng } from "../helpers/icon-png.component";
 
 // Helpers
 import { boldAutocomplatePipe } from "../../util/helpers";
+import { ShowOrHide } from "../helpers/show-or-hide.component";
 
 export const SearchPreview = ({
   historySearch,
@@ -60,10 +64,13 @@ export const SearchPreview = ({
             : historySearch}
         </span>
       </section>
-      {/* Todo: show trash img only if is historySerches but not if is searchSuggestions */}
-      <button className="pointer" onClick={onRemoveHistorySearch}>
-        <IconPng name={IconPngUrlModel.Trash} />
-      </button>
+      {/* The condition exists in the sketch of the component, but maybe it's by mistake */}
+      <ShowOrHide isShow={!!filterBy.term}>
+        {/* Todo: show trash img only if is historySerches but not if is searchSuggestions */}
+        <button className="pointer" onClick={onRemoveHistorySearch}>
+          <IconPng name={IconPngUrlModel.Trash} />
+        </button>
+      </ShowOrHide>
     </li>
   );
 };
