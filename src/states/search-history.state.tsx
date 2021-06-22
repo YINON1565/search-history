@@ -69,11 +69,15 @@ const allSearchesfilteredState = selector({
 
 // ******* End => Selectors *********
 
-// interface HistorySearch {
-//   _id : string,
-//   txt: string,
-//   counter : number,
-  // lastAt : number // at timestamp
+// ----- Infrastructure for using suggested keywords ----
+// interface SuggestionSearch {
+//   _id: string;
+//   txt: string;
+// }
+// interface HistorySearch extends SuggestionSearch {
+  //   isFromHistory: boolean;
+  //   counter: number;
+  //   lastAt: number; // at timestamp
 // }
 
 export {
