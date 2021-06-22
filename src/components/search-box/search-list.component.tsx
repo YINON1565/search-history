@@ -19,8 +19,7 @@ export const SearchList = ({
         return (
           <SearchPreview
             key={index}
-            historySearch={historySearch}
-            historySearchIndex={index}
+            currHistorySearch={historySearch}
           />
         );
       })}

@@ -41,11 +41,14 @@ const searchSimilarTermInputIdxState = selector({
   key: "searchSimilarTermInputIdxState",
   get: ({ get }) => {
     const filterBy = get(filterByState);
-    return filterBy.term
+    const idx = filterBy.term
       ? get(historySearchesState).findIndex((historySearch) =>
           isSame(historySearch, filterBy.term)
         )
       : -1;
+      console.log(idx, 'idx');
+      
+      return idx
   },
 });
 

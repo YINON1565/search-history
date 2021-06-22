@@ -26,8 +26,7 @@ import { boldAutocomplatePipe } from "../../util/helpers";
 import { ShowOrHide } from "../helpers/show-or-hide.component";
 
 export const SearchPreview = ({
-  historySearch,
-  historySearchIndex,
+  currHistorySearch,
 }: SearchPreviewType) => {
   // Recoil state
   const setIsLoading = useSetRecoilState(isSearchLoadingState);
@@ -38,14 +37,18 @@ export const SearchPreview = ({
 
   // Events
   const onRemoveHistorySearch = (ev: React.SyntheticEvent) => {
+    const historySearchIdx = historySearches.findIndex(historySearch=> historySearch === currHistorySearch)
     ev.stopPropagation();
-    setHistorySearches(removeHistoySearch(historySearches, historySearchIndex));
+    setHistorySearches(removeHistoySearch(historySearches, historySearchIdx));
   };
-
+  
   const onSelectSearch = (ev: React.SyntheticEvent) => {
+    const historySearchIdx = historySearches.findIndex(historySearch=> historySearch === currHistorySearch)
     ev.stopPropagation();
+    console.log(historySearchIdx, 'historySearchIndex');
+    
     setHistorySearches(
-      saveHistoySearch(historySearches, historySearchIndex, historySearch)
+      saveHistoySearch(historySearches, historySearchIdx, currHistorySearch)
     );
     setIsSearchBoxFocus(false);
 
@@ -68,8 +71,8 @@ export const SearchPreview = ({
         <IconPng name={IconPngUrlModel.History} />
         <span>
           {filterBy.term
-            ? boldAutocomplatePipe(historySearch, filterBy.term)
-            : historySearch}
+            ? boldAutocomplatePipe(currHistorySearch, filterBy.term)
+            : currHistorySearch}
         </span>
       </section>
       {/* The condition exists in the sketch of the component, but maybe it's by mistake */}
@@ -99,6 +102,5 @@ const useStyles = createUseStyles((theme: ThemeModel) => ({
 }));
 
 interface SearchPreviewType {
-  historySearch: string;
-  historySearchIndex: number;
+  currHistorySearch: string;
 }
