@@ -23,7 +23,7 @@ import { IconPng } from "../helpers/icon-png.component";
 
 // Helpers
 import { boldAutocomplatePipe } from "../../util/helpers";
-import { ShowOrHide } from "../helpers/show-or-hide.component";
+// import { ShowOrHide } from "../helpers/show-or-hide.component";
 
 export const SearchPreview = ({
   currHistorySearch,
