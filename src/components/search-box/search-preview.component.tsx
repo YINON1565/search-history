@@ -45,8 +45,6 @@ export const SearchPreview = ({
   const onSelectSearch = (ev: React.SyntheticEvent) => {
     const historySearchIdx = historySearches.findIndex(historySearch=> historySearch === currHistorySearch)
     ev.stopPropagation();
-    console.log(historySearchIdx, 'historySearchIndex');
-    
     setHistorySearches(
       saveHistoySearch(historySearches, historySearchIdx, currHistorySearch)
     );
