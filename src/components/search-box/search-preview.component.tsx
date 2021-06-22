@@ -73,12 +73,12 @@ export const SearchPreview = ({
         </span>
       </section>
       {/* The condition exists in the sketch of the component, but maybe it's by mistake */}
-      <ShowOrHide isShow={!!filterBy.term}>
+      {/* <ShowOrHide isShow={!!filterBy.term}> */}
         {/* Todo: show trash img only if is historySerches but not if is searchSuggestions */}
         <button className="pointer" onClick={onRemoveHistorySearch}>
           <IconPng name={IconPngUrlModel.Trash} />
         </button>
-      </ShowOrHide>
+      {/* </ShowOrHide> */}
     </li>
   );
 };
