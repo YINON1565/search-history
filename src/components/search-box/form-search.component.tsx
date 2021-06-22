@@ -10,6 +10,7 @@ import {
   isSearchBoxFocusState,
   searchSimilarTermInputIdxState,
   filterByState,
+  isSearchLoadingState,
 } from "../../states/search-history.state";
 import { saveHistoySearch } from "../../states/search-history-operations";
 
@@ -25,15 +26,15 @@ import { IconPngUrlModel } from "../../util/icon-png";
 export const FormSearch = () => {
   // React state
   const [termInput, setTermInput] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
+  
   useEffect(() => {
     setFilterBy({ term: termInput });
     termInput && setIsSearchBoxFocus(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [termInput]);
-
+  
   // Recoil state
+  const [isLoading, setIsLoading] = useRecoilState(isSearchLoadingState);
   const searchSimilarTermInputIdx = useRecoilValue(searchSimilarTermInputIdxState);
   const [filterBy, setFilterBy] = useRecoilState(filterByState);
   const [historySearches, setHistorySearches] =

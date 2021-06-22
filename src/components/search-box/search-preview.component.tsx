@@ -10,6 +10,7 @@ import {
   historySearchesState,
   isSearchBoxFocusState,
   filterByState,
+  isSearchLoadingState,
 } from "../../states/search-history.state";
 import {
   removeHistoySearch,
@@ -29,6 +30,7 @@ export const SearchPreview = ({
   historySearchIndex,
 }: SearchPreviewType) => {
   // Recoil state
+  const setIsLoading = useSetRecoilState(isSearchLoadingState);
   const [historySearches, setHistorySearches] =
     useRecoilState(historySearchesState);
   const filterBy = useRecoilValue(filterByState);
@@ -46,6 +48,12 @@ export const SearchPreview = ({
       saveHistoySearch(historySearches, historySearchIndex, historySearch)
     );
     setIsSearchBoxFocus(false);
+
+    // Toggle Loading for Fake Search
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
   };
 
   // Style

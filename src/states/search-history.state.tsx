@@ -14,6 +14,11 @@ const isSearchBoxFocusState = atom<boolean>({
   effects_UNSTABLE: [keyupHandlingEffect()],
 });
 
+const isSearchLoadingState = atom<boolean>({
+  key: "isSearchLoadingState",
+  default: false,
+});
+
 const filterByState = atom<FilterByModel>({
   key: "termInputState",
   default: {term: ''},
@@ -83,6 +88,7 @@ const allSearchesfilteredState = selector({
 export {
   // atoms
   isSearchBoxFocusState,
+  isSearchLoadingState,
   filterByState,
   searchSuggestionsState,
   historySearchesState,
